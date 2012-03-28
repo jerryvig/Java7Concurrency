@@ -72,7 +72,7 @@ public class ForkBlur extends RecursiveAction {
       System.out.println( "Threshold = " + sThreshold );
 
       int procs = Runtime.getRuntime().availableProcessors();
-      System.out.println( Integer.toString(procs) + " procs are available" );
+      System.out.println( Integer.toString(procs) + " procs are available." );
 
       ForkBlur fb = new ForkBlur( src, 0, src.length, dst );
       ForkJoinPool pool = new ForkJoinPool();
@@ -81,7 +81,7 @@ public class ForkBlur extends RecursiveAction {
       pool.invoke(fb);
       long endTime = System.currentTimeMillis();
 
-      System.out.println( "Image blue took " + Long.toString(endTime - startTime) + " millis." );
+      System.out.println( "Image blur took " + Long.toString(endTime - startTime) + " millis." );
       
       BufferedImage dstImg = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
       dstImg.setRGB(0, 0, w, h, dst, 0, w);
@@ -90,7 +90,7 @@ public class ForkBlur extends RecursiveAction {
    }
 
    public static void main( String[] args ) throws Exception {
-      File imgFile = new File( "red-tulips.jpg" );
+      File imgFile = new File( "./red-tulips.jpg" );
       BufferedImage image = ImageIO.read(imgFile);
       
       new ImageFrame( "Forkblur Original", image );
